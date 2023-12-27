@@ -6,7 +6,7 @@ export const userAuth=async(req,res,next)=>{
     
     if(!token) return res.status(404).json({
         success: false,
-        message: "Not login yet",
+        message: "Not LoggedIn yet",
     });
 
     const decodedtata=Jwt.verify(token,process.env.JWT_SECRATE);

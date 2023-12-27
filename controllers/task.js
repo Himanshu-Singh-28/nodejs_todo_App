@@ -39,14 +39,14 @@ export const updateTask = async (req, res, next) => {
 
     const task = await Task.findById(userid);
 
+    if (!task) return next(new Error("No such id"));
     task.isCompleted = !task.isCompleted;
-    if (!task) return next(new Error("no such id"));
 
     await task.save();
 
     res.status(200).json({
       success: true,
-      message: "task Updated",
+      message: "Task Updated Successfully",
     });
   } catch (error) {
     next(error);
@@ -63,7 +63,7 @@ export const deleteTask = async (req, res, next) => {
 
     res.status(200).json({
       success: true,
-      message: "task Dleated",
+      message: "Task Dleated Successfully",
     });
   } catch (error) {
     next(error);

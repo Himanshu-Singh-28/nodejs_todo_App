@@ -25,7 +25,7 @@ export const RegesterUser = async (req, res) => {
 
     user = await User.create({ name, email, password: hashedPassword });
 
-    sendcookie(user, res, "Register Successfully", 201);
+    sendcookie(user, res, "Registered Successfully", 201);
   } catch (error) {
     next(error);
   }
@@ -52,7 +52,7 @@ export const LoginUser = async (req, res) => {
       });
     }
 
-    sendcookie(user, res, `welcome back,${user.name}`, 200);
+    sendcookie(user, res, `Welcome Back,${user.name}`, 200);
   } catch (error) {
     next(error);
   }
@@ -65,6 +65,6 @@ export const LogoutUser = (req, res) => {
     secure: process.env.NODE_ENV==="Development"?false: true,
   }).json({
     success: true,
-    message: "Logged out successfully",
+    message: "Logged Out Successfully",
   });
 };
